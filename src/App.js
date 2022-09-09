@@ -16,7 +16,7 @@ function App() {
           <Header className="App-header" />
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/user/:id" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/new-post" element={<NewPost />} />
             <Route path="/edit-posts" element={<EditPosts />} />
             <Route path="/articulo/post-admin/:id" element={<PostAdmin />} />

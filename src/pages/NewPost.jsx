@@ -29,7 +29,7 @@ const NewPost = () => {
     formData.append("image", data.image[0]);
     API.post("/articulo/create", formData).then((res) => {
       if (res) {
-        navigate("/user/:id");
+        navigate("/profile");
       }
     });
   };

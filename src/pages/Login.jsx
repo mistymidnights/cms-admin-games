@@ -26,7 +26,7 @@ const Login = () => {
       setJwt(res.data.token);
       setUser(res.data.userInDb);
       if (res.data.token) {
-        navigate(`/user/:id`);
+        navigate(`/profile`);
       }
     });
   };

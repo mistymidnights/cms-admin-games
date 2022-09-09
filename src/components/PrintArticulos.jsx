@@ -5,8 +5,12 @@ import { useContext } from "react";
 import { JwtContext } from "../context/jwtContext";
 
 const PrintArticulos = (singleArticulo) => {
-  const { articulo, setArticulo } = useContext(JwtContext);
+  const { setArticulo } = useContext(JwtContext);
   console.log(singleArticulo);
+
+   const setArticulofunction =()=> {
+    setArticulo(singleArticulo.singleArticulo)
+   }
 
   return (
     <div className="divArtCont">
@@ -17,6 +21,7 @@ const PrintArticulos = (singleArticulo) => {
       <div className="btn-delete-container">
         {" "}
         {/* //cambiar delete a update */}
+        <button onClick={setArticulofunction()}>
         <Link
           to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}
           `}
@@ -25,6 +30,7 @@ const PrintArticulos = (singleArticulo) => {
         >
           <FiEdit />
         </Link>
+        </button>
         <Link
           to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}`}
           className="btn-delete"

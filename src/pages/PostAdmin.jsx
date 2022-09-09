@@ -12,7 +12,30 @@ import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
 
+import { useContext } from "react";
+import { JwtContext } from "../context/jwtContext";
+
+
+
 const PostAdmin = () => {
+
+
+
+
+  const { articulo } = useContext(JwtContext);
+
+  const defaultValues = {
+    titulo: articulo.titulo,
+    autor: articulo.autor,
+    contenido: articulo.contenido,
+    image: articulo.image,
+    
+  };
+
+
+  console.log("esteeeeeeeee")
+  console.log(articulo)
+
   let navigate = useNavigate();
   const { id } = useParams();
 
@@ -27,10 +50,10 @@ const PostAdmin = () => {
     formData.append("titulo", data.titulo);
     formData.append("autor", data.autor);
     formData.append("contenido", data.contenido);
-    formData.append("image", data.image[0]);
+    data.image[0] ? formData.append("image", data.image[0]) : <></>;
     API.patch(`/articulo/${id}`, formData).then((res) => {
       if (res) {
-        navigate("/user/:id");
+        navigate("/profile");
       }
     });
   };
@@ -50,7 +73,13 @@ const PostAdmin = () => {
         <h1 className="titleEditAdmin">EDIT POST</h1>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
           <Label>Image</Label>
-          <input type="file" id="file-input" {...register("image")}></input>
+          <input 
+            type="file" 
+            id="file-input" 
+            {...register("image")}
+            
+          
+          ></input>
           <Label
             for="file-input"
             className="file-button"
@@ -68,13 +97,10 @@ const PostAdmin = () => {
             type="text"
             id="titulo"
             name="titulo"
-            {...register("titulo", {
-              required: true,
-            })}
+            {...register("titulo")}
+            defaultValue={defaultValues.titulo}
           />
-          {errors.titulo?.type === "required" && (
-            <p className="errorMessage">This field is required</p>
-          )}
+          
           <Label className="LabelPost" htmlFor="autor">
             {" "}
             Author{" "}
@@ -84,13 +110,10 @@ const PostAdmin = () => {
             type="text"
             id="autor"
             name="autor"
-            {...register("autor", {
-              required: true,
-            })}
+            {...register("autor")}
+            defaultValue={defaultValues.autor}
           />
-          {errors.autor?.type === "required" && (
-            <p className="errorMessage">Please enter your name/company</p>
-          )}
+
           <Label className="LabelPost" htmlFor="contenido">
             {" "}
             Content{" "}
@@ -103,6 +126,7 @@ const PostAdmin = () => {
             cols="30"
             rows="13"
             {...register("contenido")}
+            defaultValue={defaultValues.contenido}
           />
           <ButtonSubmit type="submit">Edit post</ButtonSubmit>
         </FormNewPost>

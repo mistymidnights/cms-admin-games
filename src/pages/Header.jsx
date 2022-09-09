@@ -30,7 +30,7 @@ const Header = () => {
                   <li className="li_avatar">
                     <MiniProfile className="avatar_container">
                       {user.avatar != "undefined" ? (
-                        <Link to="/user/:id">
+                        <Link to="/profile">
                           <img
                             className="miniProfile"
                             src={user?.image}
