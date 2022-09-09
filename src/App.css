@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.profile-img {
+  width: 300px;
+  clip-path: circle();
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+label {
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.formprofile {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+}
+
+.file-button {
+  display: block;
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: black;
+  background-color: rgb(221, 221, 221);
+  font-size: 20px;
+  padding: 8px 0px;
+}
+
+input[type="file"] {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+}
+
+input + label {
+  cursor: pointer;
+  border-color: black;
+}
+ul {
+  list-style: none;
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.miniProfile {
+  height: 100%;
+}
+
+.rightHeaderContainer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.SubMenuA {
+  text-decoration: none;
+  color: whitesmoke;
+}
+a:hover {
+  color: rgb(255, 0, 0);
+}
+
+/* // SCROLL BAR */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(114, 10, 10);
+}
+
+/* // ERROR MESSAGE */
+.errorMessage {
+  color: red;
+}
+
+/* // titleheader */
+.linkTitle {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* // DIV ARTICULO */
+
+.divArtCont {
+  width: 70%;
+  height: 50px;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* // BTN DELETE */
+
+.btn-delete {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  color: black;
+}
+.btn-delete :hover {
+  color: red;
+  cursor: pointer;
+}
+
+.btn-delete-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titleEditAdmin {
+  color: white;
 }
