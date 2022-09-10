@@ -132,6 +132,11 @@ a:hover {
   cursor: pointer;
 }
 
+.btnOnclickEdit {
+  background-color: transparent;
+  border: none;
+}
+
 .btn-delete-container {
   display: flex;
   flex-direction: column;

@@ -44,6 +44,9 @@ const NewPost = () => {
           <Link className="SubMenuA" to="/edit-posts">
             Edit Posts
           </Link>
+          <Link className="SubMenuA" to="/new-game">
+            New Game
+          </Link>
         </SubMenuUl>
       </SubMenuDiv>
       <NewPostHero>

@@ -7,7 +7,6 @@ import {
   HeaderContainer,
   HeaderNav,
   TitleHeader,
-  HeaderBtnLogin,
   HeaderBtnLogout,
   MiniProfile,
 } from "../components/Header.element";

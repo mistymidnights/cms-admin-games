@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 
 export const NewPostHero = styled.div`
   width: 100%;
-  height: 100vh;
   background-image: url("https://cdn.wallpapersafari.com/68/24/CT52xM.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 100px;
 `;
 
 export const FormNewPost = styled.form`

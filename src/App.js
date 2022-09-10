@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import NewPost from "./pages/NewPost";
 import EditPosts from "./pages/EditPosts";
 import PostAdmin from "./pages/PostAdmin";
+import NewGame from "./pages/NewGame";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/new-post" element={<NewPost />} />
             <Route path="/edit-posts" element={<EditPosts />} />
             <Route path="/articulo/post-admin/:id" element={<PostAdmin />} />
+            <Route path="/new-game" element={<NewGame />} />
           </Routes>
         </Router>
       </div>

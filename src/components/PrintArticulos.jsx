@@ -8,9 +8,9 @@ const PrintArticulos = (singleArticulo) => {
   const { setArticulo } = useContext(JwtContext);
   console.log(singleArticulo);
 
-   const setArticulofunction =()=> {
-    setArticulo(singleArticulo.singleArticulo)
-   }
+  const setArticulofunction = () => {
+    setArticulo(singleArticulo.singleArticulo);
+  };
 
   return (
     <div className="divArtCont">
@@ -21,15 +21,15 @@ const PrintArticulos = (singleArticulo) => {
       <div className="btn-delete-container">
         {" "}
         {/* //cambiar delete a update */}
-        <button onClick={setArticulofunction()}>
-        <Link
-          to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}
+        <button className="btnOnclickEdit" onClick={setArticulofunction()}>
+          <Link
+            to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}
           `}
-          className="btn-delete"
-          // onClick={editArticulo(singleArticulo)}
-        >
-          <FiEdit />
-        </Link>
+            className="btn-delete"
+            // onClick={editArticulo(singleArticulo)}
+          >
+            <FiEdit />
+          </Link>
         </button>
         <Link
           to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}`}
