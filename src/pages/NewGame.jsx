@@ -47,6 +47,12 @@ const NewGame = () => {
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
+          <Link className="SubMenuA" to="/new-plattform">
+            New Plattform
+          </Link>
+          <Link className="SubMenuA" to="/edit-plattform">
+            Edit Plattform
+          </Link>
         </SubMenuUl>
       </SubMenuDiv>
       <NewPostHero>
@@ -142,7 +148,7 @@ const NewGame = () => {
             rows="13"
             {...register("descripcion")}
           />
-          <ButtonSubmit type="submit">Create a new post</ButtonSubmit>
+          <ButtonSubmit type="submit">Create a new game</ButtonSubmit>
         </FormNewPostGame>
       </NewPostHero>
     </>

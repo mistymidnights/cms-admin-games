@@ -1,39 +1,52 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  FormNewPost,
-  NewPostHero,
-  TextArea,
-} from "../components/NewPost.element";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { FormNewPost } from "../components/NewPost.element";
 import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
-// import { API } from "../services/API";
 import { useForm } from "react-hook-form";
 import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
+import { HeroEditBackground } from "../components/PostAdmin.element";
 
-const NewPost = () => {
+import { useContext } from "react";
+import { JwtContext } from "../context/jwtContext";
+
+// FORMULARIO PARA EDITAR EL JUEGO
+
+const PlattformAdmin = () => {
+  const { plattform } = useContext(JwtContext);
+  console.log(plattform);
+
+  const defaultValues = {
+    name: plattform.name,
+    year: plattform.year,
+    company: plattform.company,
+    image: plattform.image,
+  };
+
+  console.log(plattform);
+
   let navigate = useNavigate();
+  const { id } = useParams();
 
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
   } = useForm();
 
   const onSubmit = (data) => {
     const formData = new FormData();
-    formData.append("titulo", data.titulo);
-    formData.append("autor", data.autor);
-    formData.append("contenido", data.contenido);
-    formData.append("image", data.image[0]);
-    API.post("/articulo/create", formData).then((res) => {
+    formData.append("name", data.name);
+    formData.append("year", data.year);
+    formData.append("company", data.company);
+    data.image[0] ? formData.append("image", data.image[0]) : <></>;
+    API.patch(`/juego/${id}`, formData).then((res) => {
       if (res) {
         navigate("/profile");
       }
     });
   };
-
   return (
     <>
       <SubMenuDiv>
@@ -55,7 +68,8 @@ const NewPost = () => {
           </Link>
         </SubMenuUl>
       </SubMenuDiv>
-      <NewPostHero>
+      <HeroEditBackground>
+        <h1 className="titleEditAdmin">EDIT PLATTFORM</h1>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
           <Label>Image</Label>
           <input type="file" id="file-input" {...register("image")}></input>
@@ -68,55 +82,48 @@ const NewPost = () => {
             Select File
           </Label>
 
-          <Label className="LabelPost" htmlFor="titulo">
-            Post title
+          <Label className="LabelPost" htmlFor="name">
+            Name
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="titulo"
-            name="titulo"
-            {...register("titulo", {
-              required: true,
-            })}
+            id="name"
+            name="name"
+            {...register("name")}
+            defaultValue={defaultValues.name}
           />
-          {errors.titulo?.type === "required" && (
-            <p className="errorMessage">This field is required</p>
-          )}
-          <Label className="LabelPost" htmlFor="autor">
+
+          <Label className="LabelPost" htmlFor="year">
             {" "}
-            Author{" "}
+            Year{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="autor"
-            name="autor"
-            {...register("autor", {
-              required: true,
-            })}
+            id="year"
+            name="year"
+            {...register("year")}
+            defaultValue={defaultValues.year}
           />
-          {errors.autor?.type === "required" && (
-            <p className="errorMessage">Please enter your name/company</p>
-          )}
-          <Label className="LabelPost" htmlFor="contenido">
+
+          <Label className="LabelPost" htmlFor="company">
             {" "}
-            Content{" "}
+            Company{" "}
           </Label>
-          <TextArea
-            className="container_description"
+          <Input
+            className="LabelPost"
             type="text"
-            id="contenido"
-            name="contenido"
-            cols="30"
-            rows="13"
-            {...register("contenido")}
+            id="company"
+            name="company"
+            {...register("company")}
+            defaultValue={defaultValues.company}
           />
-          <ButtonSubmit type="submit">Create a new post</ButtonSubmit>
+          <ButtonSubmit type="submit">Edit post</ButtonSubmit>
         </FormNewPost>
-      </NewPostHero>
+      </HeroEditBackground>
     </>
   );
 };
 
-export default NewPost;
+export default PlattformAdmin;

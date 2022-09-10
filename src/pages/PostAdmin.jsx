@@ -15,13 +15,9 @@ import { HeroEditBackground } from "../components/PostAdmin.element";
 import { useContext } from "react";
 import { JwtContext } from "../context/jwtContext";
 
-
+// FORMULARIO PARA EDITAR EL ARTICULO
 
 const PostAdmin = () => {
-
-
-
-
   const { articulo } = useContext(JwtContext);
 
   const defaultValues = {
@@ -29,12 +25,10 @@ const PostAdmin = () => {
     autor: articulo.autor,
     contenido: articulo.contenido,
     image: articulo.image,
-    
   };
 
-
-  console.log("esteeeeeeeee")
-  console.log(articulo)
+  console.log("esteeeeeeeee");
+  console.log(articulo);
 
   let navigate = useNavigate();
   const { id } = useParams();
@@ -67,19 +61,22 @@ const PostAdmin = () => {
           <Link className="SubMenuA" to="/edit-posts">
             Edit Posts
           </Link>
+          <Link className="SubMenuA" to="/new-game">
+            New Game
+          </Link>
+          <Link className="SubMenuA" to="/new-plattform">
+            New Plattform
+          </Link>
+          <Link className="SubMenuA" to="/edit-plattform">
+            Edit Plattform
+          </Link>
         </SubMenuUl>
       </SubMenuDiv>
       <HeroEditBackground>
         <h1 className="titleEditAdmin">EDIT POST</h1>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
           <Label>Image</Label>
-          <input 
-            type="file" 
-            id="file-input" 
-            {...register("image")}
-            
-          
-          ></input>
+          <input type="file" id="file-input" {...register("image")}></input>
           <Label
             for="file-input"
             className="file-button"
@@ -100,7 +97,7 @@ const PostAdmin = () => {
             {...register("titulo")}
             defaultValue={defaultValues.titulo}
           />
-          
+
           <Label className="LabelPost" htmlFor="autor">
             {" "}
             Author{" "}

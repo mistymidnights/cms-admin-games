@@ -12,7 +12,7 @@ import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 
-const NewPost = () => {
+const NewPlattform = () => {
   let navigate = useNavigate();
 
   const {
@@ -23,11 +23,11 @@ const NewPost = () => {
 
   const onSubmit = (data) => {
     const formData = new FormData();
-    formData.append("titulo", data.titulo);
-    formData.append("autor", data.autor);
-    formData.append("contenido", data.contenido);
+    formData.append("name", data.name);
+    formData.append("company", data.company);
+    formData.append("year", data.year);
     formData.append("image", data.image[0]);
-    API.post("/articulo/create", formData).then((res) => {
+    API.post("/plataforma/create", formData).then((res) => {
       if (res) {
         navigate("/profile");
       }
@@ -68,55 +68,54 @@ const NewPost = () => {
             Select File
           </Label>
 
-          <Label className="LabelPost" htmlFor="titulo">
-            Post title
+          <Label className="LabelPost" htmlFor="name">
+            Name
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="titulo"
-            name="titulo"
-            {...register("titulo", {
+            id="name"
+            name="name"
+            {...register("name", {
               required: true,
             })}
           />
-          {errors.titulo?.type === "required" && (
+          {errors.name?.type === "required" && (
             <p className="errorMessage">This field is required</p>
           )}
-          <Label className="LabelPost" htmlFor="autor">
+          <Label className="LabelPost" htmlFor="company">
             {" "}
-            Author{" "}
+            Company{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="autor"
-            name="autor"
-            {...register("autor", {
+            id="company"
+            name="company"
+            {...register("company", {
               required: true,
             })}
           />
-          {errors.autor?.type === "required" && (
-            <p className="errorMessage">Please enter your name/company</p>
-          )}
-          <Label className="LabelPost" htmlFor="contenido">
+
+          <Label className="LabelPost" htmlFor="year">
             {" "}
-            Content{" "}
+            Year{" "}
           </Label>
-          <TextArea
-            className="container_description"
+          <Input
+            className="LabelPost"
             type="text"
-            id="contenido"
-            name="contenido"
-            cols="30"
-            rows="13"
-            {...register("contenido")}
+            id="year"
+            name="year"
+            {...register("year", {
+              required: true,
+            })}
           />
-          <ButtonSubmit type="submit">Create a new post</ButtonSubmit>
+
+          <ButtonSubmit type="submit">Create a new plattform</ButtonSubmit>
         </FormNewPost>
       </NewPostHero>
     </>
   );
 };
 
-export default NewPost;
+export default NewPlattform;

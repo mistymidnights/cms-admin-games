@@ -15,6 +15,7 @@ export const JwtContextProvider = ({ children }) => {
   });
 
   const [articulo, setArticulo] = useState();
+  const [plattform, setPlattform] = useState();
 
   const logout = () => {
     setUser(null);
@@ -25,7 +26,17 @@ export const JwtContextProvider = ({ children }) => {
 
   return (
     <JwtContext.Provider
-      value={{ jwt, setJwt, user, setUser, logout, articulo, setArticulo }}
+      value={{
+        jwt,
+        setJwt,
+        user,
+        setUser,
+        logout,
+        articulo,
+        setArticulo,
+        plattform,
+        setPlattform,
+      }}
     >
       {children}
     </JwtContext.Provider>

@@ -8,6 +8,7 @@ export const NewPostHero = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 100px;
+  padding-top: 100px;
 `;
 
 export const FormNewPost = styled.form`
