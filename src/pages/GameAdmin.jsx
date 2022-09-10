@@ -1,20 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Input } from "../components/Login.element";
-import { NewPostHero } from "../components/NewPost.element";
-import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { FormNewPost } from "../components/NewPost.element";
 import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Input } from "../components/Login.element";
 import { API } from "../services/API";
-import { FormNewPostGame, TextAreaGame } from "../components/NewGame.element";
+import { HeroEditBackground } from "../components/PostAdmin.element";
 
-const NewGame = () => {
+import { useContext } from "react";
+import { JwtContext } from "../context/jwtContext";
+import { TextAreaGame } from "../components/NewGame.element";
+
+// FORMULARIO PARA EDITAR EL JUEGO
+
+const GameAdmin = () => {
+  const { game } = useContext(JwtContext);
+  console.log(game);
+
+  //TODO//
+  const defaultValues = {
+    name: game.name,
+    year: game.year,
+    type: game.type,
+    pegi: game.pegi,
+    desarrolladora: game.desarrolladora,
+    plataforma: game.plataforma,
+    descripcion: game.descripcion,
+    image: game.image,
+  };
+
+  console.log(game);
+
   let navigate = useNavigate();
+  const { id } = useParams();
 
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
   } = useForm();
 
@@ -28,13 +51,12 @@ const NewGame = () => {
     formData.append("plataforma", data.plataforma);
     formData.append("description", data.descripcion);
     formData.append("image", data.image[0]);
-    API.post("/juego/create", formData).then((res) => {
+    API.patch(`/juego/${id}`, formData).then((res) => {
       if (res) {
         navigate("/profile");
       }
     });
   };
-
   return (
     <>
       <SubMenuDiv>
@@ -59,9 +81,9 @@ const NewGame = () => {
           </Link>
         </SubMenuUl>
       </SubMenuDiv>
-      <NewPostHero>
-        <FormNewPostGame onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="titleEditAdmin">NEW GAME</h1>
+      <HeroEditBackground>
+        <FormNewPost onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="titleEditAdmin">EDIT GAME</h1>
           <Label>Image</Label>
           <input type="file" id="file-input" {...register("image")}></input>
           <Label
@@ -74,7 +96,7 @@ const NewGame = () => {
           </Label>
 
           <Label className="LabelPost" htmlFor="name">
-            Game name
+            Name
           </Label>
           <Input
             className="LabelPost"
@@ -82,10 +104,9 @@ const NewGame = () => {
             id="name"
             name="name"
             {...register("name")}
+            defaultValue={defaultValues.name}
           />
-          {errors.name?.type === "required" && (
-            <p className="errorMessage">This field is required</p>
-          )}
+
           <Label className="LabelPost" htmlFor="year">
             {" "}
             Year{" "}
@@ -96,7 +117,9 @@ const NewGame = () => {
             id="year"
             name="year"
             {...register("year")}
+            defaultValue={defaultValues.year}
           />
+
           <Label className="LabelPost" htmlFor="type">
             {" "}
             Type{" "}
@@ -107,6 +130,7 @@ const NewGame = () => {
             id="type"
             name="type"
             {...register("type")}
+            defaultValue={defaultValues.type}
           />
           <Label className="LabelPost" htmlFor="pegi">
             {" "}
@@ -118,6 +142,7 @@ const NewGame = () => {
             id="pegi"
             name="pegi"
             {...register("pegi")}
+            defaultValue={defaultValues.pegi}
           />
           <Label className="LabelPost" htmlFor="dev">
             {" "}
@@ -129,6 +154,7 @@ const NewGame = () => {
             id="dev"
             name="dev"
             {...register("desarrolladora")}
+            defaultValue={defaultValues.desarrolladora}
           />
           <Label className="LabelPost" htmlFor="plattform">
             {" "}
@@ -140,6 +166,7 @@ const NewGame = () => {
             id="plattform"
             name="plattform"
             {...register("plataforma")}
+            defaultValue={defaultValues.plataforma}
           />
           <Label className="LabelPost" htmlFor="descripcion">
             {" "}
@@ -153,13 +180,14 @@ const NewGame = () => {
             cols="30"
             rows="13"
             {...register("descripcion")}
+            defaultValue={defaultValues.descripcion}
           />
 
-          <ButtonSubmit type="submit">Create a new game</ButtonSubmit>
-        </FormNewPostGame>
-      </NewPostHero>
+          <ButtonSubmit type="submit">Edit post</ButtonSubmit>
+        </FormNewPost>
+      </HeroEditBackground>
     </>
   );
 };
 
-export default NewGame;
+export default GameAdmin;

@@ -64,6 +64,9 @@ const PostAdmin = () => {
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
+          <Link className="SubMenuA" to="/edit-game">
+            Edit Game
+          </Link>
           <Link className="SubMenuA" to="/new-plattform">
             New Plattform
           </Link>
@@ -73,8 +76,8 @@ const PostAdmin = () => {
         </SubMenuUl>
       </SubMenuDiv>
       <HeroEditBackground>
-        <h1 className="titleEditAdmin">EDIT POST</h1>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="titleEditAdmin">EDIT POST</h1>
           <Label>Image</Label>
           <input type="file" id="file-input" {...register("image")}></input>
           <Label

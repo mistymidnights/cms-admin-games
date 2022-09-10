@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const NewPostHero = styled.div`
   width: 100%;
+  /* height: 100vh; */
   background-image: url("https://cdn.wallpapersafari.com/68/24/CT52xM.jpg");
   background-size: cover;
   display: flex;
@@ -13,7 +14,7 @@ export const NewPostHero = styled.div`
 
 export const FormNewPost = styled.form`
   width: 300px;
-  height: 800px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   gap: 15px;

@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 
 export const FormNewPostGame = styled.form`
   width: 300px;
-  height: 1000px;
-  padding-top: 100px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   gap: 15px;

@@ -37,6 +37,9 @@ const EditPlattform = () => {
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
+          <Link className="SubMenuA" to="/edit-game">
+            Edit Game
+          </Link>
           <Link className="SubMenuA" to="/new-plattform">
             New Plattform
           </Link>
@@ -46,6 +49,7 @@ const EditPlattform = () => {
         </SubMenuUl>
       </SubMenuDiv>
       <HeroEdit>
+        <h1 className="titleEditAdmin">EDIT PLATTFORM</h1>
         {allPlattforms.map((plataforma) => {
           return (
             <PrintPlataformas

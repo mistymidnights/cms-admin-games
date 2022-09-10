@@ -60,6 +60,9 @@ const PlattformAdmin = () => {
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
+          <Link className="SubMenuA" to="/edit-game">
+            Edit Game
+          </Link>
           <Link className="SubMenuA" to="/new-plattform">
             New Plattform
           </Link>

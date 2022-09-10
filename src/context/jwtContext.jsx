@@ -16,6 +16,7 @@ export const JwtContextProvider = ({ children }) => {
 
   const [articulo, setArticulo] = useState();
   const [plattform, setPlattform] = useState();
+  const [game, setGame] = useState();
 
   const logout = () => {
     setUser(null);
@@ -36,6 +37,8 @@ export const JwtContextProvider = ({ children }) => {
         setArticulo,
         plattform,
         setPlattform,
+        game,
+        setGame,
       }}
     >
       {children}

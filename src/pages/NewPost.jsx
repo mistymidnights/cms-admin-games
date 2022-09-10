@@ -47,6 +47,9 @@ const NewPost = () => {
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
+          <Link className="SubMenuA" to="/edit-game">
+            Edit Game
+          </Link>
           <Link className="SubMenuA" to="/new-plattform">
             New Plattform
           </Link>
@@ -57,6 +60,7 @@ const NewPost = () => {
       </SubMenuDiv>
       <NewPostHero>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="titleEditAdmin">NEW POST</h1>
           <Label>Image</Label>
           <input type="file" id="file-input" {...register("image")}></input>
           <Label

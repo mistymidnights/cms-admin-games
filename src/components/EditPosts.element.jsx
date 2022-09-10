@@ -7,7 +7,8 @@ export const HeroEdit = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  padding-top: 100px;
 `;
