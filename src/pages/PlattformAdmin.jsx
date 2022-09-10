@@ -41,7 +41,7 @@ const PlattformAdmin = () => {
     formData.append("year", data.year);
     formData.append("company", data.company);
     data.image[0] ? formData.append("image", data.image[0]) : <></>;
-    API.patch(`/juego/${id}`, formData).then((res) => {
+    API.patch(`/plataforma/${id}`, formData).then((res) => {
       if (res) {
         navigate("/profile");
       }
