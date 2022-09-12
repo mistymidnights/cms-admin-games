@@ -7,33 +7,43 @@ import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
-
-import { useContext } from "react";
-import { JwtContext } from "../context/jwtContext";
+import { useEffect, useState } from "react";
 import { TextAreaGame } from "../components/NewGame.element";
 
 // FORMULARIO PARA EDITAR EL JUEGO
 
 const GameAdmin = () => {
-  const { game } = useContext(JwtContext);
-  console.log(game);
+  const { id } = useParams();
+  const [ gameDetail, setGameDetail ] = useState();
+  const getGame = async () => {
+    const raw = await API.get(`/juego/${id}`)
+    setGameDetail(raw.data.data.juego);
+    };
+  
+  
+    useEffect(() => {
+    getGame()
+   
+    });
+  
+
 
   //TODO//
   const defaultValues = {
-    name: game.name,
-    year: game.year,
-    type: game.type,
-    pegi: game.pegi,
-    desarrolladora: game.desarrolladora,
-    plataforma: game.plataforma,
-    descripcion: game.descripcion,
-    image: game.image,
+    name: gameDetail?.name,
+    year: gameDetail?.year,
+    type: gameDetail?.type,
+    pegi: gameDetail?.pegi,
+    desarrolladora: gameDetail?.desarrolladora,
+    plataforma: gameDetail?.plataforma,
+    descripcion: gameDetail?.descripcion,
+    image: gameDetail?.image,
   };
 
-  console.log(game);
+
 
   let navigate = useNavigate();
-  const { id } = useParams();
+  
 
   const {
     register,
@@ -41,7 +51,9 @@ const GameAdmin = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
+
+
+  const formSubmit = (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("year", data.year);
@@ -82,7 +94,7 @@ const GameAdmin = () => {
         </SubMenuUl>
       </SubMenuDiv>
       <HeroEditBackground>
-        <FormNewPost onSubmit={handleSubmit(onSubmit)}>
+        <FormNewPost onSubmit={handleSubmit(formSubmit)}>
           <h1 className="titleEditAdmin">EDIT GAME</h1>
           <Label>Image</Label>
           <input type="file" id="file-input" {...register("image")}></input>
@@ -103,8 +115,9 @@ const GameAdmin = () => {
             type="text"
             id="name"
             name="name"
-            {...register("name")}
             defaultValue={defaultValues.name}
+            {...register("name")}
+            
           />
 
           <Label className="LabelPost" htmlFor="year">
@@ -116,8 +129,9 @@ const GameAdmin = () => {
             type="text"
             id="year"
             name="year"
-            {...register("year")}
             defaultValue={defaultValues.year}
+            {...register("year")}
+            
           />
 
           <Label className="LabelPost" htmlFor="type">
@@ -129,8 +143,9 @@ const GameAdmin = () => {
             type="text"
             id="type"
             name="type"
-            {...register("type")}
             defaultValue={defaultValues.type}
+            {...register("type")}
+            
           />
           <Label className="LabelPost" htmlFor="pegi">
             {" "}
@@ -141,8 +156,9 @@ const GameAdmin = () => {
             type="text"
             id="pegi"
             name="pegi"
-            {...register("pegi")}
             defaultValue={defaultValues.pegi}
+            {...register("pegi")}
+            
           />
           <Label className="LabelPost" htmlFor="dev">
             {" "}
@@ -153,8 +169,9 @@ const GameAdmin = () => {
             type="text"
             id="dev"
             name="dev"
-            {...register("desarrolladora")}
             defaultValue={defaultValues.desarrolladora}
+            {...register("desarrolladora")}
+            
           />
           <Label className="LabelPost" htmlFor="plattform">
             {" "}
@@ -165,8 +182,9 @@ const GameAdmin = () => {
             type="text"
             id="plattform"
             name="plattform"
-            {...register("plataforma")}
             defaultValue={defaultValues.plataforma}
+            {...register("plataforma")}
+            
           />
           <Label className="LabelPost" htmlFor="descripcion">
             {" "}
@@ -179,8 +197,9 @@ const GameAdmin = () => {
             name="descripcion"
             cols="30"
             rows="13"
-            {...register("descripcion")}
             defaultValue={defaultValues.descripcion}
+            {...register("descripcion")}
+            
           />
 
           <ButtonSubmit type="submit">Edit post</ButtonSubmit>

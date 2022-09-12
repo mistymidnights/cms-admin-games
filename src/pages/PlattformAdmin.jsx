@@ -7,27 +7,34 @@ import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
-
-import { useContext } from "react";
-import { JwtContext } from "../context/jwtContext";
+import { useEffect, useState } from "react";
 
 // FORMULARIO PARA EDITAR EL JUEGO
 
 const PlattformAdmin = () => {
-  const { plattform } = useContext(JwtContext);
-  console.log(plattform);
+  const { id } = useParams();
+  const [ plattformDetail, setPlattformDetail ] = useState();
+  const getGame = async () => {
+    const raw = await API.get(`/plataforma/${id}`)
+    setPlattformDetail(raw.data.data.plataforma);
+    };
+  
+  
+    useEffect(() => {
+    getGame()
+    });
 
   const defaultValues = {
-    name: plattform.name,
-    year: plattform.year,
-    company: plattform.company,
-    image: plattform.image,
+    name: plattformDetail?.name,
+    year: plattformDetail?.year,
+    company: plattformDetail?.company,
+    image: plattformDetail?.image,
   };
 
-  console.log(plattform);
+ 
 
   let navigate = useNavigate();
-  const { id } = useParams();
+
 
   const {
     register,
