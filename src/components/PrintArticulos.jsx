@@ -7,12 +7,10 @@ import { API } from "../services/API";
 import { useNavigate } from "react-router-dom";
 
 
-
 const PrintArticulos = (singleArticulo) => {
-  let navigate = useNavigate;
+  let navigate = useNavigate();
   const { setArticulo } = useContext(JwtContext);
   // const [post, setPost] = useState([]);
-  console.log(singleArticulo);
 
   const setArticulofunction = () => {
     setArticulo(singleArticulo.singleArticulo);
@@ -21,8 +19,8 @@ const PrintArticulos = (singleArticulo) => {
 
   const deletePost = () => {
     API.delete(`/articulo/${singleArticulo.singleArticulo._id}`).then((res) => {
-      if (res.data) {
-        navigate(`/profile`);
+      if (res) {
+        navigate('/profile')
       }
     });
   };
@@ -46,7 +44,7 @@ const PrintArticulos = (singleArticulo) => {
             <FiEdit />
           </Link>
         </button>
-        <button className="btnOnclickEdit" onClick={deletePost()}>
+        <button className="btnOnclickEdit" onClick={deletePost}>
           <FiX />
          </button>
       </div>
