@@ -71,6 +71,10 @@ ul {
   text-decoration: none;
   color: whitesmoke;
 }
+.SubMenuB {
+  text-decoration: none;
+  color: rgb(193 101 101);
+}
 a:hover {
   color: rgb(255, 0, 0);
 }
@@ -145,4 +149,24 @@ a:hover {
 
 .titleEditAdmin {
   color: white;
+}
+
+.Toastify__toast {
+  position: absolute;
+  top: 100px;
+  left: 56px;
+  min-height: var(--toastify-toast-min-height);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 10px 0 rgb(0 0 0 / 10%), 0 2px 15px 0 rgb(0 0 0 / 5%);
+  display: flex;
+  justify-content: space-between;
+  max-height: var(--toastify-toast-max-height);
+  overflow: hidden;
+  font-family: var(--toastify-font-family);
+  cursor: pointer;
+  direction: ltr;
+  z-index: 0;
 }

@@ -12,11 +12,23 @@ import {
   Input,
   InputSubmit,
 } from "../components/Login.element";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setJwt, setUser } = useContext(JwtContext);
+  const notify = () =>
+    toast.success("Loging in...", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const formSubmit = (formData) => {
     API.post("/user/login", formData).then((res) => {
@@ -53,8 +65,9 @@ const Login = () => {
             {...register("password")}
           ></Input>
           <Label className="submit"></Label>
-          <InputSubmit type="submit"></InputSubmit>
+          <InputSubmit type="submit" onClick={notify}></InputSubmit>
         </FormGroup>
+        <ToastContainer theme="dark" />
       </HeroLoginContainer>
     </HeroLogin>
   );

@@ -64,19 +64,19 @@ const GameAdmin = () => {
           <Link className="SubMenuA" to="/new-post">
             New Post
           </Link>
-          <Link className="SubMenuA" to="/edit-posts">
+          <Link className="SubMenuB" to="/edit-posts">
             Edit Posts
           </Link>
           <Link className="SubMenuA" to="/new-game">
             New Game
           </Link>
-          <Link className="SubMenuA" to="/edit-game">
+          <Link className="SubMenuB" to="/edit-game">
             Edit Game
           </Link>
           <Link className="SubMenuA" to="/new-plattform">
             New Plattform
           </Link>
-          <Link className="SubMenuA" to="/edit-plattform">
+          <Link className="SubMenuB" to="/edit-plattform">
             Edit Plattform
           </Link>
         </SubMenuUl>
