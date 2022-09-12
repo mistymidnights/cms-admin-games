@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { JwtContext } from "../context/jwtContext";
@@ -12,13 +12,13 @@ import {
 } from "../components/Profile.element";
 import { Label, Input } from "../components/Login.element";
 import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
-  const { user, logout } = useContext(JwtContext);
+  const { user, logout, setUser } = useContext(JwtContext);
+  const savedUser = localStorage.getItem("user");
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
+
 
   const defaultValues = {
     nick: user.nick,
@@ -38,20 +38,6 @@ const Profile = () => {
       }
     });
   };
-
-    const notify = () =>
-    toast.success("Profile updated, please log in", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: false,
-      progress: undefined,
-    });
-
-
-  
 
   return (
     <>
@@ -110,7 +96,7 @@ const Profile = () => {
                   >
                     Select File
                   </label>
-                  <ButtonSubmit onClick={notify} type="submit">Edit Profile</ButtonSubmit>
+                  <ButtonSubmit type="submit">Edit Profile</ButtonSubmit>
                 </div>
               </FormGroupProfile>
             </div>

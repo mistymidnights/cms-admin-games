@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   FormNewPost,
-  NewPostHero,
   TextArea,
 } from "../components/NewPost.element";
 import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
@@ -11,21 +10,32 @@ import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
+import { useEffect, useState } from "react";
 
-import { useContext } from "react";
-import { JwtContext } from "../context/jwtContext";
 
 // FORMULARIO PARA EDITAR EL ARTICULO
 
 const PostAdmin = () => {
-  const { articulo } = useContext(JwtContext);
 
-  const defaultValues = {
-    titulo: articulo.titulo,
-    autor: articulo.autor,
-    contenido: articulo.contenido,
-    image: articulo.image,
+  const [ articuloDetail, setArticuloDetail ] = useState();
+
+  const getArticulo = async () => {
+  const raw = await API.get(`/articulo/${id}`)
+  setArticuloDetail(raw.data.data.articulo);
   };
+
+
+  useEffect(() => {
+  getArticulo()
+  console.log(articuloDetail)
+  }, []);
+
+  // const defaultValues = {
+  //   titulo: articuloDetail.titulo,
+  //   autor: articuloDetail.autor,
+  //   contenido: articuloDetail.contenido,
+  //   image: articuloDetail.image,
+  // };
 
   let navigate = useNavigate();
   const { id } = useParams();
@@ -47,6 +57,8 @@ const PostAdmin = () => {
       }
     });
   };
+
+    
   return (
     <>
       <SubMenuDiv>
@@ -94,7 +106,7 @@ const PostAdmin = () => {
             id="titulo"
             name="titulo"
             {...register("titulo")}
-            defaultValue={defaultValues.titulo}
+            // defaultValue={defaultValues.titulo}
           />
 
           <Label className="LabelPost" htmlFor="autor">
@@ -107,7 +119,7 @@ const PostAdmin = () => {
             id="autor"
             name="autor"
             {...register("autor")}
-            defaultValue={defaultValues.autor}
+            // defaultValue={defaultValues.autor}
           />
 
           <Label className="LabelPost" htmlFor="contenido">
@@ -122,7 +134,7 @@ const PostAdmin = () => {
             cols="30"
             rows="13"
             {...register("contenido")}
-            defaultValue={defaultValues.contenido}
+            // defaultValue={defaultValues.contenido}
           />
           <ButtonSubmit type="submit">Edit post</ButtonSubmit>
         </FormNewPost>

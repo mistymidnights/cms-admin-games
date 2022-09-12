@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { JwtContext } from "../context/jwtContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -12,29 +12,29 @@ import {
   Input,
   InputSubmit,
 } from "../components/Login.element";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   let navigate = useNavigate();
   const { setJwt, setUser } = useContext(JwtContext);
-  const notify = () =>
-    toast.success("Loging in...", {
-      position: "top-center",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: false,
-      progress: undefined,
-    });
 
 
+
+  const notify = () => {
+     Swal.fire({
+      title: "Loging in...",
+      // html: `<img`
+      showConfirmButton: false,
+      allowOutsideClick:false,
+      timer: 5000,
+       timerProgressBar: true,
+     });
+  }
 
   const formSubmit = (formData) => {
     API.post("/user/login", formData).then((res) => {
-      console.log(res);
+
       window.localStorage.setItem("token", res.data.token);
       window.localStorage.setItem("user", JSON.stringify(res.data.userInDb));
       setJwt(res.data.token);
@@ -44,6 +44,9 @@ const Login = () => {
       }
     });
   };
+
+
+
 
   return (
     <HeroLogin>
@@ -70,7 +73,6 @@ const Login = () => {
           <Label className="submit"></Label>
           <InputSubmit type="submit" onClick={notify}></InputSubmit>
         </FormGroup>
-        <ToastContainer theme="dark" />
       </HeroLoginContainer>
     </HeroLogin>
   );

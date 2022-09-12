@@ -8,9 +8,10 @@ export const JwtContextProvider = ({ children }) => {
     return savedJwt || null;
   });
 
+
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
-    const initialValue = JSON.parse[savedUser]; //PUTOS CORCHETES
+    const initialValue = JSON.parse(savedUser); //PUTOS CORCHETES
     return initialValue || null;
   });
 

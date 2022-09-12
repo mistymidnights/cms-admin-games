@@ -16,7 +16,6 @@ const EditPosts = () => {
   const getAllArticulos = async () => {
     API.get("/articulo/").then((res) => {
       setAllArticulos(res.data.data.articulo);
-      console.log(res.data.data.articulo);
     });
   };
 

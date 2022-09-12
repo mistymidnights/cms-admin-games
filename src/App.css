@@ -140,7 +140,10 @@ a:hover {
   background-color: transparent;
   border: none;
   color: black;
-  font-size: 20px;
+  font-size: 30px;
+}
+.btnOnclickEdit:hover {
+  color: red;
 }
 
 .btn-delete-container {
