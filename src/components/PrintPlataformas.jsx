@@ -11,6 +11,7 @@ const PrintPlataformas = (singlePlataforma) => {
   const setPlattformfunction = () => {
     setPlattform(singlePlataforma.singlePlataforma);
   };
+  
 
   return (
     <div className="divArtCont">

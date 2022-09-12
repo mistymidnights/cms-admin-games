@@ -16,7 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   let navigate = useNavigate();
   const { setJwt, setUser } = useContext(JwtContext);
   const notify = () =>
@@ -26,15 +26,17 @@ const Login = () => {
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
-      draggable: true,
+      draggable: false,
       progress: undefined,
     });
+
+
 
   const formSubmit = (formData) => {
     API.post("/user/login", formData).then((res) => {
       console.log(res);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.userInDb));
+      window.localStorage.setItem("token", res.data.token);
+      window.localStorage.setItem("user", JSON.stringify(res.data.userInDb));
       setJwt(res.data.token);
       setUser(res.data.userInDb);
       if (res.data.token) {
@@ -54,6 +56,7 @@ const Login = () => {
             name="nick"
             {...register("nick")}
           ></Input>
+          
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"

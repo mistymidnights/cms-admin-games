@@ -3,13 +3,28 @@ import { FiEdit, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { JwtContext } from "../context/jwtContext";
+import { API } from "../services/API";
+import { useNavigate } from "react-router-dom";
+
+
 
 const PrintArticulos = (singleArticulo) => {
+  let navigate = useNavigate;
   const { setArticulo } = useContext(JwtContext);
+  // const [post, setPost] = useState([]);
   console.log(singleArticulo);
 
   const setArticulofunction = () => {
     setArticulo(singleArticulo.singleArticulo);
+  };
+
+
+  const deletePost = () => {
+    API.delete(`/articulo/${singleArticulo.singleArticulo._id}`).then((res) => {
+      if (res.data) {
+        navigate(`/profile`);
+      }
+    });
   };
 
   return (
@@ -31,13 +46,9 @@ const PrintArticulos = (singleArticulo) => {
             <FiEdit />
           </Link>
         </button>
-        <Link
-          to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}`}
-          className="btn-delete"
-          // onClick={editArticulo(singleArticulo)}
-        >
+        <button className="btnOnclickEdit" onClick={deletePost()}>
           <FiX />
-        </Link>
+         </button>
       </div>
     </div>
   );

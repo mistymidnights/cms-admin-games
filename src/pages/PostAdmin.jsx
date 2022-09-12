@@ -27,15 +27,11 @@ const PostAdmin = () => {
     image: articulo.image,
   };
 
-  console.log("esteeeeeeeee");
-  console.log(articulo);
-
   let navigate = useNavigate();
   const { id } = useParams();
 
   const {
     register,
-    formState: { errors },
     handleSubmit,
   } = useForm();
 
