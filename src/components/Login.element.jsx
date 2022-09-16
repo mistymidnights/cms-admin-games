@@ -46,6 +46,9 @@ export const Input = styled.input`
   border-radius: 10px;
   width: 100%;
   margin-bottom: 0.5em;
+  &&:focus {
+    border-color: black solid 2px;
+  }
 `;
 
 export const InputSubmit = styled.input`
