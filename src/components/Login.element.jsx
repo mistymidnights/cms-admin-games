@@ -49,6 +49,12 @@ export const Input = styled.input`
   &&:focus {
     border-color: black solid 2px;
   }
+
+  @media (max-width: 1200px) {
+    &&:focus {
+      border-color: black solid 2px;
+    }
+  }
 `;
 
 export const InputSubmit = styled.input`

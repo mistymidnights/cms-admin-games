@@ -1,5 +1,4 @@
 .button_li_nav{
-
   background: none;
   width: 150px;
   height: 50px;
@@ -9,11 +8,55 @@
   font-size: 18px;
 }
 
+.button_li_nav_profile{
+  background: none;
+  width: 150px;
+  height: 50px;
+  color:#ccc;
+  border: 0px;
+  z-index: -1;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.button_li_nav_home{
+  background: none;
+  width: 150px;
+  height: 50px;
+  color:#ccc;
+  border: 0px;
+  z-index: -1;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
 .button_li_nav:hover{
+  text-decoration: underline overline;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.button_li_nav_profile:hover{
   background: rgb(196,23,51);
   font-weight: bolder;
-
 }
+
+.button_li_nav_home:hover{
+  background: rgb(196,23,51);
+  font-weight: bolder;
+}
+
+body.dark .button_li_nav:hover{
+  background: rgb(30, 14, 14);;
+  font-weight: bolder;
+}
+
+
+body.dark .button_li_nav_profile:hover{
+  background: rgb(30, 14, 14);;
+  font-weight: bolder;
+}
+
 
 .div_father_control{
   display:flex;
@@ -41,8 +84,6 @@
 }
 .dropdown-content li {
   display: block;
-  background: rgb(196,23,51);
-  background: linear-gradient(0deg, rgba(196,23,51,1) 23%, rgba(0,0,0,1) 78%);
   padding: 12px;
 
 }
@@ -56,6 +97,15 @@
   background-color: #c41733;
 }
 
+body.dark .dropdown-content li:hover {
+  color: #FFFFFF;
+  background-color: rgb(30, 14, 14);
+}
+
+body.dark .dropdown-content {
+  color: #FFFFFF;
+  background-color: #c41733;
+}
 
 header {
 
@@ -245,7 +295,8 @@ header {
   
   header .control img {
     border-radius: 50%;
-    width: 70%;
+    width: 50px;
+    height: 50px;
   }
   
   .image_control {
@@ -259,7 +310,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 14vh;
+    min-height: 9vh;
     padding: 20px 0;
     font-size: 20px;
     padding-left: 3rem;
@@ -314,12 +365,21 @@ header {
     color: #333;
   }
   
-  @media (max-width: 913px) {
+  @media (max-width: 1200px) {
     .dropdown-content {
 
       background-color: #000000;
 
     }
+    .button_li_nav_profile{
+      margin: 0px
+    }
+
+    .button_li_nav_home{
+      margin: 0px
+    }
+
+    
 
     .button_li_nav:hover{
       background: rgb(196,23,51);
@@ -373,12 +433,12 @@ background: radial-gradient(circle, rgba(196,23,51,1) 16%, rgba(0,0,0,1) 76%);
       width: 70%;
     }
   
-    .container_imagen_logout {
-      width: 60%;
-    }
+
     .container_imagen_logout div .image_control_image {
-      width: 100%;
-      height: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
     }
     .container_imagen_logout div {
       margin: 10px;
@@ -429,7 +489,7 @@ background: radial-gradient(circle, rgba(196,23,51,1) 16%, rgba(0,0,0,1) 76%);
       height: 200%;
       border-right: #ccc 1px solid;
 
-      transform: translateX(1000px);
+      transform: translateX(-1200px);
       transition: transform 0.5s ease-in-out;
       padding-top: 25px;
     }
@@ -580,9 +640,6 @@ background: radial-gradient(circle, rgba(196,23,51,1) 16%, rgba(0,0,0,1) 76%);
     }
   
 
-    body.dark .button_logout_control {
-      background-color: pink;
-    }
   
     .welcome {
       margin-top: 30px;
@@ -608,7 +665,7 @@ background: radial-gradient(circle, rgba(196,23,51,1) 16%, rgba(0,0,0,1) 76%);
     }
   
     .container_imagen_logout div .image_control_image {
-      width: 120%;
+      width: 100%;
       height: 100%;
     }
   }
