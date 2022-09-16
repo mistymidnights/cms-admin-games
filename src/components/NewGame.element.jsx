@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 export const FormNewPostGame = styled.form`
   width: 300px;
-  height: 1200px;
+  height: 1536px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
 `;
 

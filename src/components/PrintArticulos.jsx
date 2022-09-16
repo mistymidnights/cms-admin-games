@@ -6,21 +6,26 @@ import { JwtContext } from "../context/jwtContext";
 import { API } from "../services/API";
 import { useNavigate } from "react-router-dom";
 
-
 const PrintArticulos = (singleArticulo) => {
   let navigate = useNavigate();
   const { setArticulo } = useContext(JwtContext);
-  // const [post, setPost] = useState([]);
 
   const setArticulofunction = () => {
     setArticulo(singleArticulo.singleArticulo);
+    localStorage.removeItem("articulo");
+    localStorage.setItem(
+      "articulo",
+      JSON.stringify(singleArticulo.singleArticulo)
+    );
+    const savedArticulo = localStorage.getItem("articulo");
+    const ValueEdit = JSON.parse(savedArticulo);
+    setArticulo(ValueEdit);
   };
-
 
   const deletePost = () => {
     API.delete(`/articulo/${singleArticulo.singleArticulo._id}`).then((res) => {
       if (res) {
-        navigate('/profile')
+        navigate("/profile");
       }
     });
   };
@@ -34,7 +39,7 @@ const PrintArticulos = (singleArticulo) => {
       <div className="btn-delete-container">
         {" "}
         {/* //cambiar delete a update */}
-        <button className="btnOnclickEdit" onClick={setArticulofunction()}>
+        <button className="btnOnclickEdit" onClick={setArticulofunction}>
           <Link
             to={`/articulo/post-admin/${singleArticulo.singleArticulo._id}
           `}
@@ -46,7 +51,7 @@ const PrintArticulos = (singleArticulo) => {
         </button>
         <button className="btnOnclickEdit" onClick={deletePost}>
           <FiX />
-         </button>
+        </button>
       </div>
     </div>
   );

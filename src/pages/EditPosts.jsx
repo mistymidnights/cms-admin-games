@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { HeroEdit } from "../components/EditPosts.element";
 import PrintArticulos from "../components/PrintArticulos";
-import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 import { API } from "../services/API";
 
 const EditPosts = () => {
@@ -25,30 +23,17 @@ const EditPosts = () => {
 
   return (
     <>
-      <SubMenuDiv>
-        <SubMenuUl>
-          <Link className="SubMenuA" to="/new-post">
-            New Post
-          </Link>
-          <Link className="SubMenuB" to="/edit-posts">
-            Edit Posts
-          </Link>
-          <Link className="SubMenuA" to="/new-game">
-            New Game
-          </Link>
-          <Link className="SubMenuB" to="/edit-game">
-            Edit Game
-          </Link>
-          <Link className="SubMenuA" to="/new-plattform">
-            New Plattform
-          </Link>
-          <Link className="SubMenuB" to="/edit-plattform">
-            Edit Plattform
-          </Link>
-        </SubMenuUl>
-      </SubMenuDiv>
       <HeroEdit>
-        <h1 className="titleEditAdmin">EDIT POST</h1>
+        <img
+          src="https://i.ibb.co/bNgTMks/sakura-1.png"
+          alt="titulo_editpost"
+          className="b_titu_editPost"
+        />
+        <img
+          src="https://i.ibb.co/jGv4c3Y/sakura.png"
+          alt="titulo_editpost"
+          className="w_titu_editPost"
+        />
         {allArticulos.map((articulo) => {
           return (
             <PrintArticulos singleArticulo={articulo} key={articulo.titulo} />

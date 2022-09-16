@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const HeroLogin = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #922323;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +44,7 @@ export const Input = styled.input`
   font-weight: bold;
   font-size: 14px;
   border-radius: 10px;
-  width: 70%;
+  width: 100%;
   margin-bottom: 0.5em;
 `;
 

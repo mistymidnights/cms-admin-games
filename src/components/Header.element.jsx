@@ -54,5 +54,6 @@ export const CustomName = styled.span`
 
 export const MiniProfile = styled.div`
   height: 50px;
-  clip-path: circle();
+  border-radius: 50%;
+  object-fit: cover;
 `;

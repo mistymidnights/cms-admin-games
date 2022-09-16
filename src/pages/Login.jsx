@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { JwtContext } from "../context/jwtContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -15,26 +15,23 @@ import {
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
   const { setJwt, setUser } = useContext(JwtContext);
 
-
-
   const notify = () => {
-     Swal.fire({
+    Swal.fire({
       title: "Loging in...",
       // html: `<img`
       showConfirmButton: false,
-      allowOutsideClick:false,
+      allowOutsideClick: false,
       timer: 5000,
-       timerProgressBar: true,
-     });
-  }
+      timerProgressBar: true,
+    });
+  };
 
   const formSubmit = (formData) => {
     API.post("/user/login", formData).then((res) => {
-
       window.localStorage.setItem("token", res.data.token);
       window.localStorage.setItem("user", JSON.stringify(res.data.userInDb));
       setJwt(res.data.token);
@@ -44,9 +41,6 @@ const Login = () => {
       }
     });
   };
-
-
-
 
   return (
     <HeroLogin>
@@ -59,7 +53,7 @@ const Login = () => {
             name="nick"
             {...register("nick")}
           ></Input>
-          
+
           <Label htmlFor="password">Password</Label>
           <Input
             type="password"

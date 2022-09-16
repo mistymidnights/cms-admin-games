@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { JwtContext } from "../context/jwtContext";
 import { API } from "../services/API";
 import {
@@ -11,14 +11,12 @@ import {
   ButtonSubmit,
 } from "../components/Profile.element";
 import { Label, Input } from "../components/Login.element";
-import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 
 const Profile = () => {
-  const { user, logout, setUser } = useContext(JwtContext);
-  const savedUser = localStorage.getItem("user");
+  const { user, logout } = useContext(JwtContext);
+
   const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
-
 
   const defaultValues = {
     nick: user.nick,
@@ -41,28 +39,6 @@ const Profile = () => {
 
   return (
     <>
-      <SubMenuDiv>
-        <SubMenuUl>
-          <Link className="SubMenuA" to="/new-post">
-            New Post
-          </Link>
-          <Link className="SubMenuB" to="/edit-posts">
-            Edit Posts
-          </Link>
-          <Link className="SubMenuA" to="/new-game">
-            New Game
-          </Link>
-          <Link className="SubMenuB" to="/edit-game">
-            Edit Game
-          </Link>
-          <Link className="SubMenuA" to="/new-plattform">
-            New Plattform
-          </Link>
-          <Link className="SubMenuB" to="/edit-plattform">
-            Edit Plattform
-          </Link>
-        </SubMenuUl>
-      </SubMenuDiv>
       <HeroProfile>
         <ProfileSection className="profile">
           <ImageProfile className="container_profile">

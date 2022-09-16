@@ -1,11 +1,139 @@
 * {
   margin: 0;
   padding: 0;
+
 }
+
+a{
+  text-decoration: none;
+  font-style: none;
+}
+
+body{
+  background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1019998452672905226/CT52xMwhite.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+body.dark {
+  background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1019998412046864424/CT52xM.jpg")
+}
+
+body.dark .titleEditAdmin{
+  color:white
+}
+
+body.dark label{
+  color:white
+}
+
+body.dark h3{
+  color:black
+}
+
+.divArtCont{
+  background-color: rgba(217, 217, 217, 0.715);
+}
+
+body.dark .divArtCont {
+
+  background-color: rgba(255, 255, 255, 0.697);}
+
+.btn-container p{
+  color:rgb(152, 29, 29)
+}
+
+/* TITULOS IMAGENES  */
+
+body.dark .welcome {
+  color:black;
+}
+.b_img_logi{
+  display:block
+}
+
+.w_img_logi{
+  display:none;
+
+}
+
+body.dark .b_img_logi{
+  display:none
+}
+
+body.dark .w_img_logi{
+  display:block;
+}
+
+
+.w_titu_editPost{
+  display:block
+}
+
+.b_titu_editPost{
+  display:none;
+  
+}
+
+body.dark .w_titu_editPost{
+  display:none
+}
+
+body.dark .b_titu_editPost{
+  display:block;
+}
+
+.w_titu_newPost{
+  display:block
+}
+
+.b_titu_newPost{
+  display:none;
+}
+
+body.dark .w_titu_newPost{
+  display:none
+}
+
+body.dark .b_titu_newPost{
+  display:block;
+}
+
+.w_titu_newGame{
+  display:block;
+
+}
+
+.b_titu_newGame{
+  display:none;
+
+}
+
+body.dark .w_titu_newGame{
+  display:none;
+  
+}
+
+body.dark .b_titu_newGame{
+  display:block;
+
+}
+
+
 
 .profile-img {
   width: 300px;
-  clip-path: circle();
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.container_image_profile{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
 }
 
 label {
@@ -116,7 +244,6 @@ a:hover {
 .divArtCont {
   width: 70%;
   height: 50px;
-  background-color: whitesmoke;
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -153,7 +280,7 @@ a:hover {
 }
 
 .titleEditAdmin {
-  color: white;
+  color: rgb(10, 10, 10);
 }
 
 /* // */
@@ -176,4 +303,57 @@ a:hover {
   left: 265px;
   top: 20px;
   padding-top: 14px !important;
+}
+
+
+@media (max-width: 600px) {
+  .w_titu_editPost{
+    width: 100%;
+  }
+  
+  .b_titu_editPost{
+    width: 100%;
+  }
+  
+  body.dark .w_titu_editPost{
+    width: 100%;
+  }
+  
+  body.dark .b_titu_editPost{
+    width: 100%;
+  }
+  
+  .w_titu_newPost{
+    width: 100%;
+  }
+  
+  .b_titu_newPost{
+    width: 100%;
+  }
+  
+  body.dark .w_titu_newPost{
+    width: 100%;
+  }
+  
+  body.dark .b_titu_newPost{
+    width: 100%;
+  }
+
+  .w_titu_newGame{
+    width: 100%;
+  }
+  
+  .b_titu_newGame{
+    width: 100%;
+  }
+  
+  body.dark .w_titu_newGame{
+    width: 100%;
+  }
+  
+  body.dark .b_titu_newGame{
+    width: 100%;
+  }
+  
+
 }

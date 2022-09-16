@@ -1,49 +1,33 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FormNewPost } from "../components/NewPost.element";
-import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 import { useForm } from "react-hook-form";
 import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
-import { useEffect, useState } from "react";
 import { TextAreaGame } from "../components/NewGame.element";
+import { useContext } from "react";
+import { JwtContext } from "../context/jwtContext";
 
 // FORMULARIO PARA EDITAR EL JUEGO
 
 const GameAdmin = () => {
   const { id } = useParams();
-  const [ gameDetail, setGameDetail ] = useState();
-  const getGame = async () => {
-    const raw = await API.get(`/juego/${id}`)
-    setGameDetail(raw.data.data.juego);
-    };
-  
-  
-    useEffect(() => {
-    getGame()
-   
-    });
-  
+  const { game } = useContext(JwtContext);
 
-
-  //TODO//
   const defaultValues = {
-    name: gameDetail?.name,
-    year: gameDetail?.year,
-    type: gameDetail?.type,
-    pegi: gameDetail?.pegi,
-    desarrolladora: gameDetail?.desarrolladora,
-    plataforma: gameDetail?.plataforma,
-    descripcion: gameDetail?.descripcion,
-    image: gameDetail?.image,
+    name: game.name,
+    year: game.year,
+    type: game.type,
+    pegi: game.pegi,
+    desarrolladora: game.desarrolladora,
+    plataforma: game.plataformas,
+    descripcion: game.descripcion,
+    video: game.video,
   };
 
-
-
-  let navigate = useNavigate();
-  
+  const navigate = useNavigate();
 
   const {
     register,
@@ -51,18 +35,17 @@ const GameAdmin = () => {
     handleSubmit,
   } = useForm();
 
-
-
   const formSubmit = (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("year", data.year);
     formData.append("type", data.type);
     formData.append("pegi", data.pegi);
-    formData.append("dev", data.desarrolladora);
-    formData.append("plataforma", data.plataforma);
-    formData.append("description", data.descripcion);
-    formData.append("image", data.image[0]);
+    formData.append("desarrolladora", data.desarrolladora);
+    formData.append("plataformas", data.plataformas);
+    formData.append("video", data.video);
+    formData.append("descripcion", data.descripcion);
+    data.image[0] ? formData.append("image", data.image[0]) : <></>;
     API.patch(`/juego/${id}`, formData).then((res) => {
       if (res) {
         navigate("/profile");
@@ -71,42 +54,15 @@ const GameAdmin = () => {
   };
   return (
     <>
-      <SubMenuDiv>
-        <SubMenuUl>
-          <Link className="SubMenuA" to="/new-post">
-            New Post
-          </Link>
-          <Link className="SubMenuB" to="/edit-posts">
-            Edit Posts
-          </Link>
-          <Link className="SubMenuA" to="/new-game">
-            New Game
-          </Link>
-          <Link className="SubMenuB" to="/edit-game">
-            Edit Game
-          </Link>
-          <Link className="SubMenuA" to="/new-plattform">
-            New Plattform
-          </Link>
-          <Link className="SubMenuB" to="/edit-plattform">
-            Edit Plattform
-          </Link>
-        </SubMenuUl>
-      </SubMenuDiv>
       <HeroEditBackground>
+        <div className="container_image_profile">
+          <img className="profile-img" src={game.image} alt="game image" />
+        </div>
+        {/* -------------------------FORMULARIO---------------------------- */}
         <FormNewPost onSubmit={handleSubmit(formSubmit)}>
           <h1 className="titleEditAdmin">EDIT GAME</h1>
-          <Label>Image</Label>
-          <input type="file" id="file-input" {...register("image")}></input>
-          <Label
-            for="file-input"
-            className="file-button"
-            id="image"
-            name="image"
-          >
-            Select File
-          </Label>
 
+          {/* -----------------------NAME------------------------ */}
           <Label className="LabelPost" htmlFor="name">
             Name
           </Label>
@@ -117,9 +73,9 @@ const GameAdmin = () => {
             name="name"
             defaultValue={defaultValues.name}
             {...register("name")}
-            
           />
 
+          {/* -----------------------YEAR------------------------ */}
           <Label className="LabelPost" htmlFor="year">
             {" "}
             Year{" "}
@@ -131,9 +87,8 @@ const GameAdmin = () => {
             name="year"
             defaultValue={defaultValues.year}
             {...register("year")}
-            
           />
-
+          {/* -----------------------TYPE------------------------ */}
           <Label className="LabelPost" htmlFor="type">
             {" "}
             Type{" "}
@@ -145,8 +100,8 @@ const GameAdmin = () => {
             name="type"
             defaultValue={defaultValues.type}
             {...register("type")}
-            
           />
+          {/* -----------------------PEGI------------------------ */}
           <Label className="LabelPost" htmlFor="pegi">
             {" "}
             PEGI{" "}
@@ -158,8 +113,8 @@ const GameAdmin = () => {
             name="pegi"
             defaultValue={defaultValues.pegi}
             {...register("pegi")}
-            
           />
+          {/* ---------------------DEV------------------------ */}
           <Label className="LabelPost" htmlFor="dev">
             {" "}
             Dev{" "}
@@ -171,8 +126,8 @@ const GameAdmin = () => {
             name="dev"
             defaultValue={defaultValues.desarrolladora}
             {...register("desarrolladora")}
-            
           />
+          {/* ---------------------PLATTFORM------------------------ */}
           <Label className="LabelPost" htmlFor="plattform">
             {" "}
             Plattform{" "}
@@ -183,9 +138,22 @@ const GameAdmin = () => {
             id="plattform"
             name="plattform"
             defaultValue={defaultValues.plataforma}
-            {...register("plataforma")}
-            
+            {...register("plataformas")}
           />
+          {/* ---------------------VIDEO------------------------ */}
+          <Label className="LabelPost" htmlFor="video">
+            {" "}
+            VIDEO{" "}
+          </Label>
+          <Input
+            className="LabelPost"
+            type="text"
+            id="video"
+            name="video"
+            defaultValue={defaultValues.video}
+            {...register("video")}
+          />
+          {/* ---------------------DESCRIPCION------------------------ */}
           <Label className="LabelPost" htmlFor="descripcion">
             {" "}
             Description{" "}
@@ -199,8 +167,18 @@ const GameAdmin = () => {
             rows="13"
             defaultValue={defaultValues.descripcion}
             {...register("descripcion")}
-            
           />
+          {/* -----------------------IMAGEN------------------------ */}
+          <Label>Image</Label>
+          <input type="file" id="file-input" {...register("image")}></input>
+          <Label
+            for="file-input"
+            className="file-button"
+            id="image"
+            name="image"
+          >
+            Select File
+          </Label>
 
           <ButtonSubmit type="submit">Edit post</ButtonSubmit>
         </FormNewPost>

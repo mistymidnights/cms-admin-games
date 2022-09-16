@@ -1,7 +1,6 @@
 import { JwtContextProvider } from "./context/jwtContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./pages/Header";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import NewPost from "./pages/NewPost";
@@ -13,15 +12,15 @@ import EditPlattform from "./pages/EditPlattform";
 import PlattformAdmin from "./pages/PlattformAdmin";
 import EditGame from "./pages/EditGame";
 import GameAdmin from "./pages/GameAdmin";
-
+import Headerf from "./components/Headerf/Headerf";
 function App() {
   return (
     <JwtContextProvider>
       <div className="App">
         <Router>
-          <Header className="App-header" />
+          <Headerf />
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/new-post" element={<NewPost />} />
             <Route path="/edit-posts" element={<EditPosts />} />

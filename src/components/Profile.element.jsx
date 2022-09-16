@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const HeroProfile = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: #922323;
   color: black;
   display: flex;
   justify-content: center;
@@ -57,8 +56,9 @@ export const FormGroupProfile = styled.form`
 
 export const Label = styled.label`
   margin-bottom: 0.5em;
-  color: #666666;
+  color: #1d1b1b;
   display: block;
+  font-weight: bolder;
 `;
 
 export const ButtonSubmit = styled.button`

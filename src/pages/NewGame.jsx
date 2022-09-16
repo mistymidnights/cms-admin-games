@@ -1,14 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Input } from "../components/Login.element";
 import { NewPostHero } from "../components/NewPost.element";
 import { ButtonSubmit, Label } from "../components/Profile.element";
-import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API } from "../services/API";
-import { FormNewPostGame, TextAreaGame } from "../components/NewGame.element";
-
+import { FormNewPostGame } from "../components/NewGame.element";
+import { TextArea } from "../components/NewPost.element";
 const NewGame = () => {
   let navigate = useNavigate();
 
@@ -24,9 +22,10 @@ const NewGame = () => {
     formData.append("year", data.year);
     formData.append("type", data.type);
     formData.append("pegi", data.pegi);
-    formData.append("dev", data.desarrolladora);
-    formData.append("plataforma", data.plataforma);
-    formData.append("description", data.descripcion);
+    formData.append("desarrolladora", data.desarrolladora);
+    formData.append("plataformas", data.plataformas);
+    formData.append("video", data.video);
+    formData.append("descripcion", data.descripcion);
     formData.append("image", data.image[0]);
     API.post("/juego/create", formData).then((res) => {
       if (res) {
@@ -37,41 +36,18 @@ const NewGame = () => {
 
   return (
     <>
-      <SubMenuDiv>
-        <SubMenuUl>
-          <Link className="SubMenuA" to="/new-post">
-            New Post
-          </Link>
-          <Link className="SubMenuB" to="/edit-posts">
-            Edit Posts
-          </Link>
-          <Link className="SubMenuA" to="/new-game">
-            New Game
-          </Link>
-          <Link className="SubMenuB" to="/edit-game">
-            Edit Game
-          </Link>
-          <Link className="SubMenuA" to="/new-plattform">
-            New Plattform
-          </Link>
-          <Link className="SubMenuB" to="/edit-plattform">
-            Edit Plattform
-          </Link>
-        </SubMenuUl>
-      </SubMenuDiv>
       <NewPostHero>
         <FormNewPostGame onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="titleEditAdmin">NEW GAME</h1>
-          <Label>Image</Label>
-          <input type="file" id="file-input" {...register("image")}></input>
-          <Label
-            for="file-input"
-            className="file-button"
-            id="image"
-            name="image"
-          >
-            Select File
-          </Label>
+          <img
+            src="https://i.ibb.co/yQbzgDV/NEWgameW.png"
+            alt="titulo_editpost"
+            className="w_titu_newGame"
+          />
+          <img
+            src="https://i.ibb.co/FhS9H0G/NEWgameb.png"
+            alt="titulo_editpost"
+            className="b_titu_newGame"
+          />
 
           <Label className="LabelPost" htmlFor="name">
             Game name
@@ -119,33 +95,46 @@ const NewGame = () => {
             name="pegi"
             {...register("pegi")}
           />
-          <Label className="LabelPost" htmlFor="dev">
+          <Label className="LabelPost" htmlFor="desarrolladora">
             {" "}
             Dev{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="dev"
-            name="dev"
+            id="desarrolladora"
+            name="desarrolladora"
             {...register("desarrolladora")}
           />
-          <Label className="LabelPost" htmlFor="plattform">
+          <Label className="LabelPost" htmlFor="plataformas">
             {" "}
             Plattform{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="plattform"
-            name="plattform"
-            {...register("plataforma")}
+            id="plataformas"
+            name="plataformas"
+            {...register("plataformas")}
+          />
+
+          <Label className="LabelPost" htmlFor="video">
+            {" "}
+            VIDEO{" "}
+          </Label>
+          <Input
+            className="LabelPost"
+            type="text"
+            id="video"
+            name="video"
+            {...register("video")}
           />
           <Label className="LabelPost" htmlFor="descripcion">
             {" "}
             Description{" "}
           </Label>
-          <TextAreaGame
+
+          <TextArea
             className="container_description"
             type="text"
             id="descripcion"
@@ -154,6 +143,17 @@ const NewGame = () => {
             rows="13"
             {...register("descripcion")}
           />
+
+          <Label>Image</Label>
+          <input type="file" id="file-input" {...register("image")}></input>
+          <Label
+            for="file-input"
+            className="file-button"
+            id="image"
+            name="image"
+          >
+            Select File
+          </Label>
 
           <ButtonSubmit type="submit">Create a new game</ButtonSubmit>
         </FormNewPostGame>

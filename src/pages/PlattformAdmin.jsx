@@ -1,40 +1,28 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FormNewPost } from "../components/NewPost.element";
-import { SubMenuDiv, SubMenuUl } from "../components/SubMenu.element";
 import { useForm } from "react-hook-form";
 import { ButtonSubmit, Label } from "../components/Profile.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { JwtContext } from "../context/jwtContext";
 
 // FORMULARIO PARA EDITAR EL JUEGO
 
 const PlattformAdmin = () => {
   const { id } = useParams();
-  const [ plattformDetail, setPlattformDetail ] = useState();
-  const getGame = async () => {
-    const raw = await API.get(`/plataforma/${id}`)
-    setPlattformDetail(raw.data.data.plataforma);
-    };
-  
-  
-    useEffect(() => {
-    getGame()
-    });
+  const { plattform } = useContext(JwtContext);
 
   const defaultValues = {
-    name: plattformDetail?.name,
-    year: plattformDetail?.year,
-    company: plattformDetail?.company,
-    image: plattformDetail?.image,
+    name: plattform.name,
+    year: plattform.year,
+    company: plattform.company,
+    image: plattform.image,
   };
 
- 
-
-  let navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const {
     register,
@@ -56,42 +44,16 @@ const PlattformAdmin = () => {
   };
   return (
     <>
-      <SubMenuDiv>
-        <SubMenuUl>
-          <Link className="SubMenuA" to="/new-post">
-            New Post
-          </Link>
-          <Link className="SubMenuA" to="/edit-posts">
-            Edit Posts
-          </Link>
-          <Link className="SubMenuA" to="/new-game">
-            New Game
-          </Link>
-          <Link className="SubMenuA" to="/edit-game">
-            Edit Game
-          </Link>
-          <Link className="SubMenuA" to="/new-plattform">
-            New Plattform
-          </Link>
-          <Link className="SubMenuA" to="/edit-plattform">
-            Edit Plattform
-          </Link>
-        </SubMenuUl>
-      </SubMenuDiv>
       <HeroEditBackground>
+        <div className="container_image_profile">
+          <img
+            className="profile-img"
+            src={plattform.image}
+            alt="plattform image"
+          />
+        </div>
         <h1 className="titleEditAdmin">EDIT PLATTFORM</h1>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
-          <Label>Image</Label>
-          <input type="file" id="file-input" {...register("image")}></input>
-          <Label
-            for="file-input"
-            className="file-button"
-            id="image"
-            name="image"
-          >
-            Select File
-          </Label>
-
           <Label className="LabelPost" htmlFor="name">
             Name
           </Label>
@@ -129,6 +91,16 @@ const PlattformAdmin = () => {
             {...register("company")}
             defaultValue={defaultValues.company}
           />
+          <Label>Image</Label>
+          <input type="file" id="file-input" {...register("image")}></input>
+          <Label
+            for="file-input"
+            className="file-button"
+            id="image"
+            name="image"
+          >
+            Select File
+          </Label>
           <ButtonSubmit type="submit">Edit post</ButtonSubmit>
         </FormNewPost>
       </HeroEditBackground>

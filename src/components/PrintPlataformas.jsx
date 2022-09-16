@@ -3,15 +3,34 @@ import { FiEdit, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { JwtContext } from "../context/jwtContext";
+import { useNavigate } from "react-router-dom";
+import { API } from "../services/API";
 
 const PrintPlataformas = (singlePlataforma) => {
   const { setPlattform } = useContext(JwtContext);
-  //   console.log(singlePlataforma);
+  let navigate = useNavigate();
 
   const setPlattformfunction = () => {
     setPlattform(singlePlataforma.singlePlataforma);
+    localStorage.removeItem("plattform");
+    localStorage.setItem(
+      "plattform",
+      JSON.stringify(singlePlataforma.singlePlataforma)
+    );
+    const savedPlattform = localStorage.getItem("plattform");
+    const ValueEdit = JSON.parse(savedPlattform);
+    setPlattform(ValueEdit);
   };
-  
+
+  const deletePlaform = () => {
+    API.delete(`/plataforma/${singlePlataforma.singlePlataforma._id}`).then(
+      (res) => {
+        if (res) {
+          navigate("/profile");
+        }
+      }
+    );
+  };
 
   return (
     <div className="divArtCont">
@@ -22,7 +41,7 @@ const PrintPlataformas = (singlePlataforma) => {
       <div className="btn-delete-container">
         {" "}
         {/* //cambiar delete a update */}
-        <button className="btnOnclickEdit" onClick={setPlattformfunction()}>
+        <button className="btnOnclickEdit" onClick={setPlattformfunction}>
           <Link
             to={`/edit-plattform/${singlePlataforma.singlePlataforma._id}
           `}
@@ -31,12 +50,9 @@ const PrintPlataformas = (singlePlataforma) => {
             <FiEdit />
           </Link>
         </button>
-        <Link
-          to={`/edit-plattform/${singlePlataforma.singlePlataforma._id}`}
-          className="btn-delete"
-        >
+        <button className="btnOnclickEdit" onClick={deletePlaform}>
           <FiX />
-        </Link>
+        </button>
       </div>
     </div>
   );
