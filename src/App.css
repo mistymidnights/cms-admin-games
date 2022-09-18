@@ -1,7 +1,64 @@
+
 * {
   margin: 0;
   padding: 0;
 
+}
+
+ body.dark #home{
+  background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1020363840489279518/Gaming-Wallpaper-09-1920-x-1080.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  
+}
+#home{
+  background-image: url("https://i.ibb.co/gJFpDPF/super-nintendo-brand-video-games-nintendo-typography-red-bac-q7hx-2560.webp");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_red{
+  width: 150%;
+}
+
+
+
+
+.welcome_home_div{
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Login_link{
+  color:white; 
+  font-weight: bolder;
+}
+
+
+.Login_lin:hover{
+  color:white; 
+  font-weight: bolder;
+}
+
+
+.welcome_h1{
+  color:white;
+  text-align: center;
 }
 
 a{
@@ -13,11 +70,13 @@ body{
   background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1020324608089522197/CT52xMWhite.jpg");
   background-repeat: no-repeat;
   background-size: 108% 200%;
+
   
 }
 
 body.dark {
-  background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1020324608374747229/CT52xM.jpg")
+  background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1020324608374747229/CT52xM.jpg");
+
 }
 
 body.dark .titleEditAdmin{
@@ -25,11 +84,17 @@ body.dark .titleEditAdmin{
 }
 
 body.dark label{
-  color:white
+  color:white;
+  font-weight: bolder;
+}
+
+label{
+  font-weight: bold;
 }
 
 body.dark h3{
-  color:black
+  color:black;
+  font-weight: lighter;
 }
 
 .divArtCont{
@@ -100,6 +165,22 @@ body.dark .b_titu_newPost{
   display:block;
 }
 
+.w_titu_newPlattform{
+  display:block
+}
+
+.b_titu_newPlattform{
+  display:none;
+}
+
+body.dark .w_titu_newPlattform{
+  display:none
+}
+
+body.dark .b_titu_newPlattform{
+  display:block;
+}
+
 .w_titu_newGame{
   display:block;
 
@@ -119,6 +200,22 @@ body.dark .b_titu_newGame{
   display:block;
 
 }
+
+.w_titu_editGame{
+  display:block
+}
+
+.b_titu_editGame{
+  display:none;
+  
+}
+
+body.dark .w_titu_editGame{
+  display:none
+}
+
+body.dark .b_titu_editGame{
+  display:block;}
 
 
 
@@ -166,6 +263,10 @@ label {
   padding: 8px 0px;
 }
 
+body.dark .file-button{
+  color: black
+}
+
 input[type="file"] {
   opacity: 0;
   width: 0.1px;
@@ -207,9 +308,6 @@ ul {
 .SubMenuB {
   text-decoration: none;
   color: rgb(193 101 101);
-}
-a:hover {
-  color: rgb(255, 0, 0);
 }
 
 /* // SCROLL BAR */
@@ -317,7 +415,42 @@ a:hover {
 
 }
 
+@media (max-width: 900px) {
+  body.dark #home{
+    background-image: url("https://cdn.discordapp.com/attachments/993445344358699118/1020363840489279518/Gaming-Wallpaper-09-1920-x-1080.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  
+    
+  }
+  #home{
+    background-image: url("https://i.ibb.co/gJFpDPF/super-nintendo-brand-video-games-nintendo-typography-red-bac-q7hx-2560.webp");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+}
+
+
+
+
 @media (max-width: 600px) {
+  
+  #home{
+    height: 800px;
+  }
   .divArtCont{
     height: 110px;
     
@@ -337,6 +470,22 @@ a:hover {
   body.dark .b_titu_editPost{
     width: 100%;
   }
+
+  .w_titu_editGame{
+    width: 100%;
+  }
+  
+  .b_titu_editGame{
+    width: 100%;
+  }
+  
+  body.dark .w_titu_editGame{
+    width: 100%;
+  }
+  
+  body.dark .b_titu_editGame{
+    width: 100%;
+  }
   
   .w_titu_newPost{
     width: 100%;
@@ -353,6 +502,22 @@ a:hover {
   body.dark .b_titu_newPost{
     width: 100%;
   }
+  .w_titu_newPlattform{
+    width: 100%;
+  }
+  
+  .b_titu_newPlattform{
+    width: 100%;
+  }
+  
+  body.dark .w_titu_newPlattform{
+    width: 100%;
+  }
+  
+  body.dark .b_titu_newPlattform{
+    width: 100%;
+  }
+
 
   .w_titu_newGame{
     width: 100%;
@@ -369,6 +534,4 @@ a:hover {
   body.dark .b_titu_newGame{
     width: 100%;
   }
-  
-
 }

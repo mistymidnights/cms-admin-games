@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FormNewPost, TextArea } from "../components/NewPost.element";
 
 import { useForm } from "react-hook-form";
-import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Label } from "../components/Profile.element";
+import { ButtonSubmit } from "../components/Button.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";

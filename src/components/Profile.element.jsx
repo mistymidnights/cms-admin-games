@@ -61,18 +61,17 @@ export const Label = styled.label`
   font-weight: bolder;
 `;
 
-export const ButtonSubmit = styled.button`
+export const ButtonRED = styled.button`
   padding: 0.5em;
   color: #ffffff;
-  background: #000000;
+  background: #621515;
   border: none;
   border-radius: 10px;
-  width: 30%;
+  width: 50%;
   height: 60px;
   margin-bottom: 0.5em;
   margin-top: 40px;
   &&:hover {
-    color: black;
-    background-color: #87b7e1;
+    background-color: #991e1e;
   }
 `;

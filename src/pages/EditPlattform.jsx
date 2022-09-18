@@ -25,7 +25,16 @@ const EditPlattform = () => {
   return (
     <>
       <HeroEdit>
-        <h1 className="titleEditAdmin">EDIT PLATTFORM</h1>
+        <img
+          src="https://i.ibb.co/vQrNFyg/editplattfom.png"
+          alt="titulo_editpost"
+          className="w_titu_newPlattform"
+        />
+        <img
+          src="https://i.ibb.co/7yPp3rY/editplattfom-1.png"
+          alt="titulo_editpost"
+          className="b_titu_newPlattform"
+        />
         {allPlattforms.map((plataforma) => {
           return (
             <PrintPlataformas

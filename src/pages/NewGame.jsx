@@ -1,7 +1,8 @@
 import React from "react";
 import { Input } from "../components/Login.element";
 import { NewPostHero } from "../components/NewPost.element";
-import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Label } from "../components/Profile.element";
+import { ButtonSubmit } from "../components/Button.element";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { API } from "../services/API";

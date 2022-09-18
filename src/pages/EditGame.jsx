@@ -22,7 +22,17 @@ const EditGame = () => {
   return (
     <>
       <HeroEdit>
-        <h1 className="titleEditAdmin">EDIT GAME</h1>
+        <img
+          src="https://i.ibb.co/bNgTMks/sakura-1.png"
+          alt="titulo_editpost"
+          className="b_titu_editGame"
+        />
+        <img
+          src="https://i.ibb.co/jGv4c3Y/sakura.png"
+          alt="titulo_editpost"
+          className="w_titu_editGame"
+        />
+
         {allGames.map((game) => {
           return <PrintGames singleGame={game} key={game.name} />;
         })}

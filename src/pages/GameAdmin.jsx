@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FormNewPost } from "../components/NewPost.element";
 import { useForm } from "react-hook-form";
-import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Label } from "../components/Profile.element";
+import { ButtonSubmit } from "../components/Button.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 import { HeroEditBackground } from "../components/PostAdmin.element";
@@ -60,7 +61,16 @@ const GameAdmin = () => {
         </div>
         {/* -------------------------FORMULARIO---------------------------- */}
         <FormNewPost onSubmit={handleSubmit(formSubmit)}>
-          <h1 className="titleEditAdmin">EDIT GAME</h1>
+          <img
+            src="https://i.ibb.co/bNgTMks/sakura-1.png"
+            alt="titulo_editpost"
+            className="b_titu_editGame"
+          />
+          <img
+            src="https://i.ibb.co/jGv4c3Y/sakura.png"
+            alt="titulo_editpost"
+            className="w_titu_editGame"
+          />
 
           {/* -----------------------NAME------------------------ */}
           <Label className="LabelPost" htmlFor="name">

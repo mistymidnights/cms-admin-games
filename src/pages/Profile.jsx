@@ -8,9 +8,9 @@ import {
   ProfileSection,
   ImageProfile,
   FormGroupProfile,
-  ButtonSubmit,
 } from "../components/Profile.element";
 import { Label, Input } from "../components/Login.element";
+import { ButtonSubmit } from "../components/Button.element";
 
 const Profile = () => {
   const { user, logout } = useContext(JwtContext);

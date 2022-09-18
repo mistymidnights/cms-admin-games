@@ -13,6 +13,8 @@ import PlattformAdmin from "./pages/PlattformAdmin";
 import EditGame from "./pages/EditGame";
 import GameAdmin from "./pages/GameAdmin";
 import Headerf from "./components/Headerf/Headerf";
+import Home from "./pages/Home";
+
 function App() {
   return (
     <JwtContextProvider>
@@ -20,6 +22,7 @@ function App() {
         <Router>
           <Headerf />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/new-post" element={<NewPost />} />

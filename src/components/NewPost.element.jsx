@@ -11,7 +11,7 @@ export const NewPostHero = styled.div`
 
 export const FormNewPost = styled.form`
   width: 300px;
-  height: 1200px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

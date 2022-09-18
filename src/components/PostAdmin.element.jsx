@@ -9,5 +9,5 @@ export const HeroEditBackground = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 100px 0px 100px 0px;
+  padding: 20px 0px 100px 0px;
 `;

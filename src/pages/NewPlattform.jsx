@@ -4,7 +4,8 @@ import { FormNewPost, NewPostHero } from "../components/NewPost.element";
 
 // import { API } from "../services/API";
 import { useForm } from "react-hook-form";
-import { ButtonSubmit, Label } from "../components/Profile.element";
+import { Label } from "../components/Profile.element";
+import { ButtonSubmit } from "../components/Button.element";
 import { Input } from "../components/Login.element";
 import { API } from "../services/API";
 
@@ -34,7 +35,16 @@ const NewPlattform = () => {
     <>
       <NewPostHero>
         <FormNewPost onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="titleEditAdmin">NEW PLATTFORM</h1>
+          <img
+            src="https://i.ibb.co/Wy5W8rq/NEWplaw.png"
+            alt="titulo_editpost"
+            className="w_titu_newPlattform"
+          />
+          <img
+            src="https://i.ibb.co/rsF77k9/NEWplab.png"
+            alt="titulo_editpost"
+            className="b_titu_newPlattform"
+          />
           <Label className="LabelPost" htmlFor="name">
             Name
           </Label>

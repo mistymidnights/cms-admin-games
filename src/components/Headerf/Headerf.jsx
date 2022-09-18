@@ -2,6 +2,7 @@ import "./Headerf.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { JwtContext } from "../../context/jwtContext";
+import { ButtonLogoutBIG } from "../Button.element";
 
 const toggleSidenav = () => {
   document.querySelector(".main-menu").classList.toggle("show");
@@ -135,7 +136,7 @@ const Headerf = () => {
                         ) : null}
 
                         <button
-                          onClick={() => logout() & navigate("/login")}
+                          onClick={() => logout() & navigate("/")}
                           className="button_logout_control"
                         >
                           Logout
@@ -145,15 +146,20 @@ const Headerf = () => {
                   ) : (
                     <>
                       <ul>
-                        <li onClick={toggleSidenav}>
-                          <Link to="/login">Login</Link>
-                        </li>
-                        <li onClick={toggleSidenav}>
-                          <Link to="/register">Register</Link>
+                        <li onClick={toggleSidenav} className="login_container">
+                          <Link to="/login" className="login_container">
+                            <button className="button_login_control">
+                              Login
+                            </button>
+                          </Link>
                         </li>
                       </ul>
                       <div className="logo_noUser">
-                        <img src="./images/logo.png" alt="logo" />
+                        <img
+                          src="https://i.ibb.co/SR6Vfq3/pngegg.png"
+                          alt="logo"
+                          className="noUser_logo"
+                        />
                       </div>
                     </>
                   )}

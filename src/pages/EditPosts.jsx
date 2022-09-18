@@ -5,6 +5,7 @@ import { API } from "../services/API";
 
 const EditPosts = () => {
   const [allArticulos, setAllArticulos] = useState([]);
+
   // const filteredArticulo = allArticulos.filter(
   //   (articulo) =>
   //     articulo.titulo.toLowerCase().includes(filterArticulo) ||
@@ -19,7 +20,7 @@ const EditPosts = () => {
 
   useEffect(() => {
     getAllArticulos();
-  }, []);
+  });
 
   return (
     <>
@@ -34,6 +35,7 @@ const EditPosts = () => {
           alt="titulo_editpost"
           className="w_titu_editPost"
         />
+
         {allArticulos.map((articulo) => {
           return (
             <PrintArticulos singleArticulo={articulo} key={articulo.titulo} />
