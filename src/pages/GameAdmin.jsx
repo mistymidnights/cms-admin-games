@@ -30,11 +30,7 @@ const GameAdmin = () => {
 
   const navigate = useNavigate();
 
-  const {
-    register,
-    // formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const formSubmit = (data) => {
     const formData = new FormData();
@@ -62,12 +58,12 @@ const GameAdmin = () => {
         {/* -------------------------FORMULARIO---------------------------- */}
         <FormNewPost onSubmit={handleSubmit(formSubmit)}>
           <img
-            src="https://i.ibb.co/bNgTMks/sakura-1.png"
+            src="https://i.ibb.co/vDSm0HY/editplattfom-3.png"
             alt="titulo_editpost"
             className="b_titu_editGame"
           />
           <img
-            src="https://i.ibb.co/jGv4c3Y/sakura.png"
+            src="https://i.ibb.co/Q8PdmSP/editplattfom-2.png"
             alt="titulo_editpost"
             className="w_titu_editGame"
           />
@@ -125,28 +121,28 @@ const GameAdmin = () => {
             {...register("pegi")}
           />
           {/* ---------------------DEV------------------------ */}
-          <Label className="LabelPost" htmlFor="dev">
+          <Label className="LabelPost" htmlFor="desarrolladora">
             {" "}
             Dev{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="dev"
-            name="dev"
+            id="desarrolladora"
+            name="desarrolladora"
             defaultValue={defaultValues.desarrolladora}
             {...register("desarrolladora")}
           />
           {/* ---------------------PLATTFORM------------------------ */}
-          <Label className="LabelPost" htmlFor="plattform">
+          <Label className="LabelPost" htmlFor="plataformas">
             {" "}
             Plattform{" "}
           </Label>
           <Input
             className="LabelPost"
             type="text"
-            id="plattform"
-            name="plattform"
+            id="plataformas"
+            name="plataformas"
             defaultValue={defaultValues.plataforma}
             {...register("plataformas")}
           />

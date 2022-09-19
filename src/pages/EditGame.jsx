@@ -23,12 +23,12 @@ const EditGame = () => {
     <>
       <HeroEdit>
         <img
-          src="https://i.ibb.co/bNgTMks/sakura-1.png"
+          src="https://i.ibb.co/vDSm0HY/editplattfom-3.png"
           alt="titulo_editpost"
           className="b_titu_editGame"
         />
         <img
-          src="https://i.ibb.co/jGv4c3Y/sakura.png"
+          src="https://i.ibb.co/Q8PdmSP/editplattfom-2.png"
           alt="titulo_editpost"
           className="w_titu_editGame"
         />

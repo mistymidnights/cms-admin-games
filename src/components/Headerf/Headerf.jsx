@@ -68,49 +68,48 @@ const Headerf = () => {
                 </Link>
               </li>
 
-              <li>
-                <div className="dropdown">
-                  <button className="button_li_nav">POST</button>
-                  <div class="dropdown-content">
-                    <li className="button_navUno" onClick={toggleSidenav}>
-                      <Link to="/new-post">New post</Link>
-                    </li>
-                    <li className="button_navDos" onClick={toggleSidenav}>
-                      <Link to="/edit-posts">Edit posts</Link>
-                    </li>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="dropdown">
-                  <button className="button_li_nav">GAME</button>
-                  <div class="dropdown-content">
-                    <li className="button_navUno" onClick={toggleSidenav}>
-                      <Link to="/new-game">New game</Link>
-                    </li>
-                    <li className="button_navDos" onClick={toggleSidenav}>
-                      <Link to="/edit-game">Edit game</Link>
-                    </li>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div className="dropdown">
-                  <button className="button_li_nav">PLATTFORM</button>
-                  <div class="dropdown-content">
-                    <li className="button_navUno" onClick={toggleSidenav}>
-                      <Link to="/new-plattform">New plattform</Link>
-                    </li>
-                    <li className="button_navDos" onClick={toggleSidenav}>
-                      <Link to="/edit-plattform">Edit plattform</Link>
-                    </li>
-                  </div>
-                </div>
-              </li>
-
               {user ? (
                 <>
+                  <li>
+                    <div className="dropdown">
+                      <button className="button_li_nav">POST</button>
+                      <div class="dropdown-content">
+                        <li className="button_navUno" onClick={toggleSidenav}>
+                          <Link to="/new-post">New post</Link>
+                        </li>
+                        <li className="button_navDos" onClick={toggleSidenav}>
+                          <Link to="/edit-posts">Edit posts</Link>
+                        </li>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="dropdown">
+                      <button className="button_li_nav">GAME</button>
+                      <div class="dropdown-content">
+                        <li className="button_navUno" onClick={toggleSidenav}>
+                          <Link to="/new-game">New game</Link>
+                        </li>
+                        <li className="button_navDos" onClick={toggleSidenav}>
+                          <Link to="/edit-game">Edit game</Link>
+                        </li>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div className="dropdown">
+                      <button className="button_li_nav">PLATTFORM</button>
+                      <div class="dropdown-content">
+                        <li className="button_navUno" onClick={toggleSidenav}>
+                          <Link to="/new-plattform">New plattform</Link>
+                        </li>
+                        <li className="button_navDos" onClick={toggleSidenav}>
+                          <Link to="/edit-plattform">Edit plattform</Link>
+                        </li>
+                      </div>
+                    </div>
+                  </li>
                   <li className="button_mascotas" onClick={toggleSidenav}>
                     <Link to="/profile">
                       <button className="button_li_nav_profile">PROFILE</button>
