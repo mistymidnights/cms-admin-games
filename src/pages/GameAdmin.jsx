@@ -187,7 +187,7 @@ const GameAdmin = () => {
             Select File
           </Label>
 
-          <ButtonSubmit type="submit">Edit post</ButtonSubmit>
+          <ButtonSubmit type="submit">Edit game</ButtonSubmit>
         </FormNewPost>
       </HeroEditBackground>
     </>

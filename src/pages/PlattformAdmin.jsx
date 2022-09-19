@@ -111,7 +111,7 @@ const PlattformAdmin = () => {
           >
             Select File
           </Label>
-          <ButtonSubmit type="submit">Edit post</ButtonSubmit>
+          <ButtonSubmit type="submit">Edit plattform</ButtonSubmit>
         </FormNewPost>
       </HeroEditBackground>
     </>
