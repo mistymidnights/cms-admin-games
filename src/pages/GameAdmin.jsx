@@ -52,9 +52,6 @@ const GameAdmin = () => {
   return (
     <>
       <HeroEditBackground>
-        <div className="container_image_profile">
-          <img className="profile-img" src={game.image} alt="game image" />
-        </div>
         {/* -------------------------FORMULARIO---------------------------- */}
         <FormNewPost onSubmit={handleSubmit(formSubmit)}>
           <img
@@ -67,6 +64,10 @@ const GameAdmin = () => {
             alt="titulo_editpost"
             className="w_titu_editGame"
           />
+
+          <div className="container_image_profile">
+            <img className="profile-img" src={game.image} alt="game image" />
+          </div>
 
           {/* -----------------------NAME------------------------ */}
           <Label className="LabelPost" htmlFor="name">
